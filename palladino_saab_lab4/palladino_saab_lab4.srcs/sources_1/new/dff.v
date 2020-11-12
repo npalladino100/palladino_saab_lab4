@@ -7,7 +7,7 @@ module dff (clk, reset,
   input      d;
   output     q;
   output     qb;
-// line
+
   reg        q;
 
   assign qb = ~q;
@@ -22,4 +22,4 @@ module dff (clk, reset,
       q <= d;
     end
   end
-endmodule
+endmodule`timescale 1ns / 1ps
