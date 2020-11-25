@@ -2,7 +2,7 @@ module clk_divider(
 output reg divided_clk = 0,
 input wire clk //100MHz
     );
-   localparam div_value = 1000000;   //1Hz
+   localparam div_value = 10000000;   //1Hz
     
 integer counter_value = 0;
 
