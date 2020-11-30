@@ -1,11 +1,13 @@
 `timescale 1ns / 1ps
 
 module output_register(
-output [6:0] LED_OUT,
-output [7:0] ANODE_OUT,
-input [17:0] D,
-input clk_100MHz,
-input load
+ output [6:0] LED_OUT,
+ output [7:0] ANODE_OUT,
+ input [17:0] D,
+ input 	      clk_100MHz,
+ input 	      load,
+ input [1:0]  APM,
+ input [2:0]  digit_sel
 );
 
 reg[17:0] L;
@@ -42,7 +44,7 @@ wire clk_10KHz;
 wire [2:0] refresh_counter;
 clk_divider_10KHz CD1(clk_10KHz, clk_100MHz);
 refreshCounter RF(refresh_counter, clk_10KHz);
-anodeControl AC(ANODE_OUT, refresh_counter);
-cathodeControl CC(LED_OUT, hr_segments2, hr_segments3, min_segments2, min_segments3, sec_segments2, sec_segments3, refresh_counter);
+anodeControl AC(ANODE_OUT, refresh_counter, digit_sel);
+cathodeControl CC(LED_OUT, hr_segments2, hr_segments3, min_segments2, min_segments3, sec_segments2, sec_segments3, refresh_counter, APM);
 
 endmodule

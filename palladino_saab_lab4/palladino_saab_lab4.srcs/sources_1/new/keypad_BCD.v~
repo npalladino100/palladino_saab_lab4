@@ -1,0 +1,31 @@
+`timescale 1ns / 1ps
+
+
+module keypad_BCD(
+ output [3:0] BCD,
+ input [31:0] key,
+ input 	      clk		  
+    );
+
+   reg [3:0]  BCD_reg;   
+
+always @(posedge clk) begin
+   case (key[7:0])
+     4'd22 : BCD_reg <= 4'd1;
+     4'd30 : BCD_reg <= 4'd2;
+     4'd38 : BCD_reg <= 4'd3;
+     4'd37 : BCD_reg <= 4'd4;
+     4'd46 : BCD_reg <= 4'd5;
+     4'd54 : BCD_reg <= 4'd6;
+     4'd61 : BCD_reg <= 4'd7;
+     4'd62 : BCD_reg <= 4'd8;
+     4'd70 : BCD_reg <= 4'd9;
+     4'd69 : BCD_reg <= 4'd0;
+     default : BCD_reg <= 4'd10;
+   endcase // case (key)
+end // always @ (key)
+
+   assign BCD = BCD_reg;
+   
+   
+endmodule

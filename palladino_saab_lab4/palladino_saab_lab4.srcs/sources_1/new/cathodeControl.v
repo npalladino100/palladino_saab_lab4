@@ -9,11 +9,24 @@ module cathodeControl(
  input [6:0] 	  min_segments3,
  input [6:0] 	  sec_segments2,
  input [6:0] 	  sec_segments3,
- input [2:0] 	  refreshCounter
+ input [2:0] 	  refreshCounter,
+ input [1:0] 	  APM
     );
-    
-    always@(refreshCounter)
-    begin
+
+   reg [6:0] 	  APM_segments;
+   
+
+   always @(APM) begin
+     case(APM)
+       2'b10 : APM_segments = 7'b000_1000; // AM
+       2'b01 : APM_segments = 7'b000_1100; // PM
+       default : APM_segments = 7'b111_1111;
+     endcase // case (APM)
+   end
+   
+    always @(refreshCounter, APM_segments, APM)
+      
+      begin
         case(refreshCounter)
             3'd0:
                 ONE_DIGIT = hr_segments2;
@@ -28,11 +41,9 @@ module cathodeControl(
 	    3'd5:
                 ONE_DIGIT = sec_segments3;
 	    3'd6:
-	        ONE_DIGIT = 7'b1000000;
-	    3'd7:
-	        ONE_DIGIT = 7'b1000000;
-	    3'd8:
-	        ONE_DIGIT = 7'b1000000;
+	        ONE_DIGIT = 7'b1111111;
+	    3'd7: 
+	        ONE_DIGIT = APM_segments;
         endcase
     end
     

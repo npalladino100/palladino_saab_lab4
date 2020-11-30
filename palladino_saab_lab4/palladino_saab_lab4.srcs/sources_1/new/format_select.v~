@@ -1,0 +1,59 @@
+`timescale 1ns / 1ps
+
+
+module format_select(
+		     output reg [17:0] time_out,
+		     output reg [1:0]      APM,
+		     input [17:0]      time_in,
+		     input 	       format,
+		     input 	       counter_out
+		     
+		        );
+
+   reg [17:0] 			       time_reg;
+   
+   
+   always @(*)
+     begin
+	if (format==1)
+	  begin
+	     case (time_in[17:12])
+	       6'd0 : begin time_reg = {6'd12, time_in[11:0]}; APM <= 2'b10; end	       
+	       6'd1 : begin time_reg = {6'd1, time_in[11:0]}; APM <= 2'b10; end	       
+	       6'd2 : begin time_reg = {6'd2, time_in[11:0]}; APM <= 2'b10; end	        
+	       6'd3 : begin time_reg = {6'd3, time_in[11:0]}; APM <= 2'b10; end	       
+	       6'd4 : begin time_reg = {6'd4, time_in[11:0]}; APM <= 2'b10; end	       
+	       6'd5 : begin time_reg = {6'd5, time_in[11:0]}; APM <= 2'b10; end	       
+	       6'd6 : begin time_reg = {6'd6, time_in[11:0]}; APM <= 2'b10; end	       
+	       6'd7 : begin time_reg = {6'd7, time_in[11:0]}; APM <= 2'b10; end	       
+	       6'd8 : begin time_reg = {6'd8, time_in[11:0]}; APM <= 2'b10; end	       
+	       6'd9 : begin time_reg = {6'd9, time_in[11:0]}; APM <= 2'b10; end	       
+	       6'd10 : begin time_reg = {6'd10, time_in[11:0]}; APM <= 2'b10; end	       
+	       6'd11 : begin time_reg = {6'd11, time_in[11:0]}; APM <= 2'b10; end	       
+	       6'd12 : begin time_reg = {6'd12, time_in[11:0]}; APM <= 2'b01; end	       
+	       6'd13 : begin time_reg = {6'd1, time_in[11:0]}; APM <= 2'b01; end	       
+	       6'd14 : begin time_reg = {6'd2, time_in[11:0]}; APM <= 2'b01; end	       
+	       6'd15 : begin time_reg = {6'd3, time_in[11:0]}; APM <= 2'b01; end	       
+	       6'd16 : begin time_reg = {6'd4, time_in[11:0]}; APM <= 2'b01; end	       
+	       6'd17 : begin time_reg = {6'd5, time_in[11:0]}; APM <= 2'b01; end	       
+	       6'd18 : begin time_reg = {6'd6, time_in[11:0]}; APM <= 2'b01; end	      
+	       6'd19 : begin time_reg = {6'd7, time_in[11:0]}; APM <= 2'b01; end	       
+	       6'd20 : begin time_reg = {6'd8, time_in[11:0]}; APM <= 2'b01; end	       
+	       6'd21 : begin time_reg = {6'd9, time_in[11:0]}; APM <= 2'b01; end	       
+	       6'd22 : begin time_reg = {6'd10, time_in[11:0]}; APM <= 2'b01; end	       
+	       6'd23 : begin time_reg = {6'd11, time_in[11:0]}; APM <= 2'b01; end
+	       
+	     endcase // case (time_in[17:12])
+	  end // if (format==1)
+	if (format==0) begin time_reg = time_in; APM = 2'b00; end
+
+
+	if (counter_out == 1) time_out <= time_reg;
+	else time_out <= 18'bzzzzzzzzzzzzzzzzzz
+	
+     end // always @ (*)
+   
+	       
+		  
+   
+endmodule

@@ -1,0 +1,11 @@
+module BCD_binary
+   (
+    output wire [13:0] bin, 
+    input wire [3:0]   bcd1, 
+    input wire [3:0]   bcd0 
+    
+   );
+
+   assign bin = (bcd1*4'd10) + bcd0;
+
+endmodule
