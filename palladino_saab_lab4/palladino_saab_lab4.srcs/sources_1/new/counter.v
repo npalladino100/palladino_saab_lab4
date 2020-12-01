@@ -1,13 +1,17 @@
 module counter(
     output reg [17:0] time_out,
+    output reg 	      alarmLED,
     input [17:0]      time_in,
     input wire 	      clk_100MHz,
-    input 	      load      
+    input 	      load,
+    input 	      alarm_in
    );
 
    reg [5:0] 	     hour=1;
    reg [5:0] 	     minute=0;
    reg [5:0] 	     second=0;
+
+   reg [17:0] 	     alarm;
    
    wire 	     clk_1Hz;
 
@@ -35,6 +39,15 @@ module counter(
       end
 
       time_out <= {hour, minute, second};
+
+
+      if (alarm_in == 1) begin
+	 alarm <= time_in;
+      end
+      
+      
+      if ({hour, minute, second} == alarm) alarmLED <= 1;
+      else alarmLED <= 0;
       
    end // always @ (posedge clk_1Hz)
 

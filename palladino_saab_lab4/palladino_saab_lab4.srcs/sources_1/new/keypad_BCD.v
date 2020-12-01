@@ -9,7 +9,7 @@ module keypad_BCD(
 
    reg [3:0]  BCD_reg;   
 
-always @(posedge clk) begin
+always @(negedge clk) begin
    case (key[7:0])
      8'd22 : BCD_reg <= 4'd1;
      8'd30 : BCD_reg <= 4'd2;
@@ -21,8 +21,9 @@ always @(posedge clk) begin
      8'd62 : BCD_reg <= 4'd8;
      8'd70 : BCD_reg <= 4'd9;
      8'd69 : BCD_reg <= 4'd0;
-     default : BCD_reg <= 4'd10;
+     //default : BCD_reg <= 4'd10;
    endcase // case (key)
+
 end // always @ (key)
 
    assign BCD = BCD_reg;

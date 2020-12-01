@@ -3,56 +3,94 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="counter_testbench_behav.wdb" id="1">
+      <db_ref path="time_set_register_testbench_behav.wdb" id="1">
          <top_modules>
-            <top_module name="counter_testbench" />
             <top_module name="glbl" />
+            <top_module name="time_set_register_testbench" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="1830001fs"></ZoomEndTime>
-      <Cursor1Time time="402000fs"></Cursor1Time>
+      <ZoomStartTime time="1666666fs"></ZoomStartTime>
+      <ZoomEndTime time="11666667fs"></ZoomEndTime>
+      <Cursor1Time time="10000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="77"></NameColumnWidth>
       <ValueColumnWidth column_width="76"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="8" />
-   <wvobject fp_name="/counter_testbench/time_out" type="array">
-      <obj_property name="ElementShortName">time_out[5:0]</obj_property>
-      <obj_property name="ObjectShortName">time_out[5:0]</obj_property>
+   <WVObjectSize size="15" />
+   <wvobject fp_name="/time_set_register_testbench/TSR1/settime_out" type="array">
+      <obj_property name="ElementShortName">settime_out[17:0]</obj_property>
+      <obj_property name="ObjectShortName">settime_out[17:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/counter_testbench/time_in" type="array">
-      <obj_property name="ElementShortName">time_in[5:0]</obj_property>
-      <obj_property name="ObjectShortName">time_in[5:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/counter_testbench/clk_100MHz" type="logic">
-      <obj_property name="ElementShortName">clk_100MHz</obj_property>
-      <obj_property name="ObjectShortName">clk_100MHz</obj_property>
-   </wvobject>
-   <wvobject fp_name="/counter_testbench/load" type="array">
-      <obj_property name="ElementShortName">load[2:0]</obj_property>
-      <obj_property name="ObjectShortName">load[2:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/counter_testbench/enable" type="array">
-      <obj_property name="ElementShortName">enable[2:0]</obj_property>
-      <obj_property name="ObjectShortName">enable[2:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/counter_testbench/C1/hour" type="array">
-      <obj_property name="ElementShortName">hour[5:0]</obj_property>
-      <obj_property name="ObjectShortName">hour[5:0]</obj_property>
+   <wvobject fp_name="/time_set_register_testbench/TSR1/settime_out_reg" type="array">
+      <obj_property name="ElementShortName">settime_out_reg[17:0]</obj_property>
+      <obj_property name="ObjectShortName">settime_out_reg[17:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/counter_testbench/C1/minute" type="array">
-      <obj_property name="ElementShortName">minute[5:0]</obj_property>
-      <obj_property name="ObjectShortName">minute[5:0]</obj_property>
+   <wvobject fp_name="/time_set_register_testbench/TSR1/cnt" type="array">
+      <obj_property name="ElementShortName">cnt[2:0]</obj_property>
+      <obj_property name="ObjectShortName">cnt[2:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/counter_testbench/C1/second" type="array">
-      <obj_property name="ElementShortName">second[5:0]</obj_property>
-      <obj_property name="ObjectShortName">second[5:0]</obj_property>
+   <wvobject fp_name="/time_set_register_testbench/TSR1/BCD" type="array">
+      <obj_property name="ElementShortName">BCD[3:0]</obj_property>
+      <obj_property name="ObjectShortName">BCD[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/time_set_register_testbench/TSR1/enable" type="logic">
+      <obj_property name="ElementShortName">enable</obj_property>
+      <obj_property name="ObjectShortName">enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/time_set_register_testbench/TSR1/time_set_enable" type="logic">
+      <obj_property name="ElementShortName">time_set_enable</obj_property>
+      <obj_property name="ObjectShortName">time_set_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/time_set_register_testbench/TSR1/hours" type="array">
+      <obj_property name="ElementShortName">hours[5:0]</obj_property>
+      <obj_property name="ObjectShortName">hours[5:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/time_set_register_testbench/TSR1/minutes" type="array">
+      <obj_property name="ElementShortName">minutes[5:0]</obj_property>
+      <obj_property name="ObjectShortName">minutes[5:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/time_set_register_testbench/TSR1/seconds" type="array">
+      <obj_property name="ElementShortName">seconds[5:0]</obj_property>
+      <obj_property name="ObjectShortName">seconds[5:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/time_set_register_testbench/TSR1/dig1" type="array">
+      <obj_property name="ElementShortName">dig1[3:0]</obj_property>
+      <obj_property name="ObjectShortName">dig1[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/time_set_register_testbench/TSR1/dig2" type="array">
+      <obj_property name="ElementShortName">dig2[3:0]</obj_property>
+      <obj_property name="ObjectShortName">dig2[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/time_set_register_testbench/TSR1/dig3" type="array">
+      <obj_property name="ElementShortName">dig3[3:0]</obj_property>
+      <obj_property name="ObjectShortName">dig3[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/time_set_register_testbench/TSR1/dig4" type="array">
+      <obj_property name="ElementShortName">dig4[3:0]</obj_property>
+      <obj_property name="ObjectShortName">dig4[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/time_set_register_testbench/TSR1/dig5" type="array">
+      <obj_property name="ElementShortName">dig5[3:0]</obj_property>
+      <obj_property name="ObjectShortName">dig5[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/time_set_register_testbench/TSR1/dig6" type="array">
+      <obj_property name="ElementShortName">dig6[3:0]</obj_property>
+      <obj_property name="ObjectShortName">dig6[3:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
 </wave_config>

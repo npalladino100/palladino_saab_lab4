@@ -71,10 +71,7 @@ proc create_report { reportName command } {
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 2
-set_param synth.incrementalSynthesisCache {C:/Users/Nick Palladino/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-16820-Nich/incrSyn}
 set_param xicom.use_bs_reader 1
-set_msg_config -id {Synth 8-256} -limit 10000
-set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
@@ -100,6 +97,7 @@ read_verilog -library xil_defaultlib {
   {C:/Users/Nick Palladino/Documents/GitHub/palladino_saab_lab4/palladino_saab_lab4/palladino_saab_lab4.srcs/sources_1/new/clock_divider.v}
   {C:/Users/Nick Palladino/Documents/GitHub/palladino_saab_lab4/palladino_saab_lab4/palladino_saab_lab4.srcs/sources_1/new/counter.v}
   {C:/Users/Nick Palladino/Documents/GitHub/palladino_saab_lab4/palladino_saab_lab4/palladino_saab_lab4.srcs/sources_1/new/debouncer.v}
+  {C:/Users/Nick Palladino/Documents/GitHub/palladino_saab_lab4/palladino_saab_lab4/palladino_saab_lab4.srcs/sources_1/new/debouncer2.v}
   {C:/Users/Nick Palladino/Documents/GitHub/palladino_saab_lab4/palladino_saab_lab4/palladino_saab_lab4.srcs/sources_1/new/format_select.v}
   {C:/Users/Nick Palladino/Documents/GitHub/palladino_saab_lab4/palladino_saab_lab4/palladino_saab_lab4.srcs/sources_1/new/keypad_BCD.v}
   {C:/Users/Nick Palladino/Documents/GitHub/palladino_saab_lab4/palladino_saab_lab4/palladino_saab_lab4.srcs/sources_1/new/output_register.v}

@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-| Date         : Mon Nov 30 01:19:09 2020
+| Date         : Mon Nov 30 23:29:44 2020
 | Host         : Nich running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
 | Design       : top
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    26 |
-|    Minimum number of control sets                        |    26 |
+| Total control sets                                       |    29 |
+|    Minimum number of control sets                        |    29 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |   106 |
+| Unused register locations in slices containing registers |   117 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    26 |
-| >= 0 to < 4        |     6 |
-| >= 4 to < 6        |    10 |
-| >= 6 to < 8        |     2 |
+| Total control sets |    29 |
+| >= 0 to < 4        |     7 |
+| >= 4 to < 6        |     9 |
+| >= 6 to < 8        |     3 |
 | >= 8 to < 10       |     3 |
 | >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
-| >= 16              |     5 |
+| >= 16              |     7 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,10 +58,10 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              94 |           36 |
+| No           | No                    | No                     |              93 |           32 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              69 |           18 |
-| Yes          | No                    | No                     |              42 |           19 |
+| No           | Yes                   | No                     |              82 |           21 |
+| Yes          | No                    | No                     |              67 |           22 |
 | Yes          | No                    | Yes                    |               0 |            0 |
 | Yes          | Yes                   | No                     |               9 |            3 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
@@ -73,32 +73,35 @@ Table of Contents
 +----------------------------+------------------------------+--------------------------+------------------+----------------+--------------+
 |        Clock Signal        |         Enable Signal        |     Set/Reset Signal     | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------------------+------------------------------+--------------------------+------------------+----------------+--------------+
+|  clk                       |                              |                          |                1 |              1 |         1.00 |
+|  clk                       | PS2/debounce/Iv1_i_1_n_0     |                          |                1 |              1 |         1.00 |
 |  clk                       | PS2/debounce/O0_i_1_n_0      |                          |                1 |              1 |         1.00 |
 |  clk                       | PS2/debounce/O1_i_1_n_0      |                          |                1 |              1 |         1.00 |
 |  clk                       | PS2/debounce/clear           |                          |                1 |              1 |         1.00 |
-|  clk                       | PS2/debounce/Iv1_i_1_n_0     |                          |                1 |              1 |         1.00 |
-|  KBCD1/E[0]                |                              | TSR1/cnt_reg[2]_i_3_n_0  |                1 |              3 |         3.00 |
+|  DB2/PB_state              |                              |                          |                1 |              3 |         3.00 |
 |  OR1/CD1/divided_clk_reg_0 |                              |                          |                1 |              3 |         3.00 |
-|  TSR1/dig1_reg[3]_i_1_n_0  |                              |                          |                2 |              4 |         2.00 |
-|  TSR1/dig2_reg[3]_i_1_n_0  |                              |                          |                1 |              4 |         4.00 |
+|  TSR1/dig4_n_0             |                              |                          |                1 |              4 |         4.00 |
+|  TSR1/dig2_n_0             |                              |                          |                2 |              4 |         2.00 |
+|  TSR1/dig3_reg[3]_i_1_n_0  |                              |                          |                1 |              4 |         4.00 |
+|  TSR1/dig1_n_0             |                              |                          |                1 |              4 |         4.00 |
+|  TSR1/dig5_n_0             |                              |                          |                1 |              4 |         4.00 |
 |  TSR1/dig6_reg[3]_i_1_n_0  |                              |                          |                1 |              4 |         4.00 |
-|  TSR1/dig3_reg[3]_i_1_n_0  |                              |                          |                2 |              4 |         2.00 |
-|  TSR1/dig4_reg[3]_i_1_n_0  |                              |                          |                1 |              4 |         4.00 |
-|  TSR1/dig5_reg[3]_i_1_n_0  |                              |                          |                2 |              4 |         2.00 |
-|  clk                       |                              | PS2/debounce/clear       |                1 |              4 |         4.00 |
 | ~PS2/debounce/O0           | PS2/cnt                      | PS2/cnt[3]_i_1_n_0       |                1 |              4 |         4.00 |
+|  clk                       |                              | PS2/debounce/clear       |                1 |              4 |         4.00 |
 |  clk                       | PS2/debounce/cnt1[4]_i_1_n_0 | PS2/debounce/Iv1_i_1_n_0 |                2 |              5 |         2.50 |
-|  clk_100MHz_IBUF_BUFG      |                              |                          |                3 |              5 |         1.67 |
-|  divided_clk_BUFG          | CNT1/minute[5]_i_1_n_0       |                          |                3 |              6 |         2.00 |
 |  divided_clk_BUFG          | CNT1/hour[5]_i_1_n_0         |                          |                3 |              6 |         2.00 |
+|  divided_clk_BUFG          | CNT1/minute[5]_i_1_n_0       |                          |                3 |              6 |         2.00 |
+| ~clk                       | PS2/E[0]                     |                          |                2 |              7 |         3.50 |
 |  PS2/flag                  | PS2/keycode[6]_i_1_n_0       |                          |                2 |              8 |         4.00 |
-|  clk                       |                              |                          |                5 |              9 |         1.80 |
+|  clk_100MHz_IBUF_BUFG      |                              |                          |                5 |              8 |         1.60 |
 | ~PS2/debounce/O0           |                              |                          |                3 |              9 |         3.00 |
-|  clk_100MHz_IBUF_BUFG      | outreg_in_IBUF               |                          |                7 |             18 |         2.57 |
-|  CNT1/E[0]                 |                              |                          |                8 |             20 |         2.50 |
-|  divided_clk_BUFG          |                              |                          |                7 |             24 |         3.43 |
-|  clk_100MHz_IBUF_BUFG      |                              | OR1/CD1/divided_clk      |                8 |             31 |         3.88 |
+|  clk_100MHz_IBUF_BUFG      |                              | DB2/PB_cnt[0]_i_1_n_0    |                4 |             16 |         4.00 |
+|  clk_100MHz_IBUF_BUFG      | outreg_in_IBUF               |                          |                5 |             18 |         3.60 |
+|  divided_clk_BUFG          | alarm_in_IBUF                |                          |                3 |             18 |         6.00 |
+|  CNT1/E[0]                 |                              |                          |                7 |             20 |         2.86 |
+|  divided_clk_BUFG          |                              |                          |                7 |             25 |         3.57 |
 |  clk_100MHz_IBUF_BUFG      |                              | CNT1/CD1/divided_clk_1   |                8 |             31 |         3.88 |
+|  clk_100MHz_IBUF_BUFG      |                              | OR1/CD1/divided_clk      |                8 |             31 |         3.88 |
 +----------------------------+------------------------------+--------------------------+------------------+----------------+--------------+
 
 

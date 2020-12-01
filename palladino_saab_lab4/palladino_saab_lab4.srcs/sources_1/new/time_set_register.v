@@ -1,11 +1,12 @@
 `timescale 1ns / 1ps
 
 module time_set_register(
-			 output reg [17:0] settime_out,
-			 output reg [2:0]  cnt,
+			 output [17:0] settime_out,
+			 output [2:0]  cnt_out,
 			 input [3:0]   BCD, 
 			 input 	       enable,
-			 input 	       time_set_enable 	      
+			 input 	       time_set_enable,
+			 input 	       butt 	      
     );
 
    wire [5:0] 			      hours;
@@ -17,31 +18,47 @@ module time_set_register(
    reg [3:0] 			      dig4;
    reg [3:0] 			      dig5;
    reg [3:0] 			      dig6;
+   reg [17:0] 			      settime_out_reg;
+   reg [2:0] 			      cnt;
+   
 
-   always @(BCD, time_set_enable) begin
-	 if (BCD != 4'b10) cnt = cnt+1;
-	 if (cnt==7 | time_set_enable==0) cnt = 0;
-
+   always @(posedge butt) begin
       
+      
+      
+      if ((cnt>=0) & (cnt<6))
+	cnt <= cnt+3'd1;
+      else cnt <= 0;
+   end
+   
+
+   
+   always @(cnt) begin
       case (cnt)
 	3'd1 : dig1 <= BCD;
 	3'd2 : dig2 <= BCD;
 	3'd3 : dig3 <= BCD;
 	3'd4 : dig4 <= BCD;
 	3'd5 : dig5 <= BCD;
-	3'd6 : dig6 <= BCD;
+	3'd6 : dig6 <= BCD; 
       endcase // case (cnt)
-   end // always @ (posedge BCD)
+   end // always @ (cnt)
+   
+
        
 
-      BCD_binary BCDB1(hours, dig2, dig1);
-      BCD_binary BCDB2(minutes, dig4, dig3);
-      BCD_binary BCDB3(seconds, dig6, dig5);      
+   
+      BCD_binary BCDB1(hours, dig1, dig2);
+      BCD_binary BCDB2(minutes, dig3, dig4);
+      BCD_binary BCDB3(seconds, dig5, dig6);      
 
-      
-      always @(enable) begin
-	 if (enable) settime_out =  {hours, minutes, seconds};
-	 else settime_out = 18'bzzzzzzzzzzzzzzzzzz;
+
+   assign settime_out = settime_out_reg;
+   assign cnt_out = cnt;
+   
+      always @(*) begin
+	 if (enable) settime_out_reg <=  {hours, minutes, seconds};
+	 else settime_out_reg = 18'bzzzzzzzzzzzzzzzzzz;
       end
    
       
